@@ -1,4 +1,4 @@
-# Eloquent Has By Non-dependent Subquery [![Build Status](https://github.com/mpyw/eloquent-has-by-non-dependent-subquery/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/mpyw/eloquent-has-by-non-dependent-subquery/actions) [![Coverage Status](https://coveralls.io/repos/github/mpyw/eloquent-has-by-non-dependent-subquery/badge.svg?branch=master)](https://coveralls.io/github/mpyw/eloquent-has-by-non-dependent-subquery?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mpyw/eloquent-has-by-non-dependent-subquery/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mpyw/eloquent-has-by-non-dependent-subquery/?branch=master)
+# Eloquent Has By Non-dependent Subquery [![Build Status](https://github.com/denisgeomiq/eloquent-has-by-non-dependent-subquery/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/denisgeomiq/eloquent-has-by-non-dependent-subquery/actions) [![Coverage Status](https://coveralls.io/repos/github/denisgeomiq/eloquent-has-by-non-dependent-subquery/badge.svg?branch=master)](https://coveralls.io/github/denisgeomiq/eloquent-has-by-non-dependent-subquery?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/denisgeomiq/eloquent-has-by-non-dependent-subquery/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/denisgeomiq/eloquent-has-by-non-dependent-subquery/?branch=master)
 
 Convert `has()` and `whereHas()` constraints to non-dependent subqueries.
 
@@ -11,12 +11,12 @@ Convert `has()` and `whereHas()` constraints to non-dependent subqueries.
 ## Requirements
 
 - PHP: `^7.3 || ^8.0`
-- Laravel: `^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0`
+- Laravel: `^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0`
 
 ## Installing
 
 ```bash
-composer require mpyw/eloquent-has-by-non-dependent-subquery
+composer require denisgeomiq/eloquent-has-by-non-dependent-subquery
 ```
 
 #### Suggestion
@@ -59,7 +59,7 @@ select * from `posts` where exists (
   where `posts`.`id` = `comments`.`post_id`
     and `comments`.`deleted_at` is null
 ) and `posts`.`deleted_at` is null
-``` 
+```
 
 These subqueries may cause performance degradations.
 This package provides **`Illuminate\Database\Eloquent\Builder::hasByNonDependentSubquery()`** macro to solve this problem:
@@ -108,7 +108,7 @@ A relation method name that returns a **`Relation`** instance except `MorphTo`.
 Builder::hasByNonDependentSubquery('comments')
 ```
 
-You can pass nested relations as an array or a string with dot-chain syntax. 
+You can pass nested relations as an array or a string with dot-chain syntax.
 
 ```php
 Builder::hasByNonDependentSubquery(['comments', 'author'])
